@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'detail.css' %}">
+    <title>기부참여하기</title>
+    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<body>
+    물건상세페이지
+    
+    <div class="detail_wrapper">
+        <form method="POST" action="{% url 'kakaopay' %}">   <!--갯수에 따라 금액이 바뀌도록 코드 변경 필요-->
+            {% csrf_token %}
+            <div class="detail_img"><img src= "{{i.product_img.url}}"></div>
+            <div class="detail_name">{{i.product_name}}</div>
+            <div class="detail_description">{{i.product_description}}</div>
+            <div class="detail_crowd_money">{{i.product_crowd_money}}</div>
+            <div class="detail_target_money">{{i.product_target_money}}</div>
+            <div class="detail_donation_money">
+                <div class="number">
+                    <span id="donation_count">1</span>
+                    <a href="#" id="increaseQuantity">+</a>
+                    <a href="#" id="decreaseQuantity">-</a>       
+                </div>
+            </div>
+            <div class="deatil_donation_go">
+                <img src="{% static 'images/payment_icon_yellow_large.png' %}">
+                <input type="submit" value="카카오페이로 결제하기">
+            </div> 
+        </form>
+    </div>
+</body>
+<script>
+    $(function(){
+    $('#decreaseQuantity').click(function(e){
+    e.preventDefault();
+    var stat = $('#donation_count').text();
+    var num = parseInt(stat,10);
+    num--;
+    if(num<=0){
+    alert('더이상 줄일수 없습니다.');
+    num =1;
+    }
+    $('#donation_count').text(num);
+    });
+    $('#increaseQuantity').click(function(e){
+    e.preventDefault();
+    var stat = $('#donation_count').text();
+    var num = parseInt(stat,10);
+    num++;
+
+    if(num>10){
+    alert('더이상 늘릴수 없습니다.');
+    num=10;
+    }
+    $('#donation_count').text(num);
+    });
+    });
+</script>
+</html>

@@ -7,14 +7,21 @@
 </head>
 <body>
     <div class="signup_form">
-        <form method="POST" action="*">
-            <li><input type="text" placeholder="이름을 입력"></li>
-            <li><input type="text" placeholder="아이디를 입력해주세요"></li>
-            <li><input type="password" placeholder="비밀번호"></li>
-            <li><input type="password" placeholder="비밀번호확인"></li>
-            <li><input type="text" placeholder="주민번호앞자리와 뒤에 하나 입력"></li>
-            <li><input type="email" placeholder="이메일"></li>
+        <form method="POST" action="{% url 'signup_create' %}">
+            {% csrf_token %}
+            <li>이름<input type="text" placeholder="이름을 입력" name="user_name"></li>
+            <li>아이디<input type="text" placeholder="아이디를 입력해주세요" name="user_id"></li>
+            <li>비밀번호<input type="password" placeholder="비밀번호" name="user_password"></li>
+            <li>비밀번호확인<input type="password" placeholder="비밀번호확인" name="user_password2"></li>
+            <li>주민번호<input type="text" placeholder="생년월일 8자리" name="user_info"></li>
+            <li>이메일<input type="email" placeholder="이메일" name="user_email"></li>
+            <li>폰번호<input type="text" plaoceholder="폰번호 입력" name="user_phone"></li>
             <li><button type="submit">계정 생성</button></li>
+            {% if messages %}
+            {% for message in messages %}
+            {{message.message}}
+            {% endfor %}
+            {% endif %}
         </form>
     </div>
 </body>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    {% load socialaccount %}
+    {% providers_media_js %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="login_form">
+      
+        <form method="POST" action="{% url 'login_try' %}">
+            {% csrf_token %}
+            <h1>퍼네이션</h1>
+            <li>아이디 : <input type="text" placeholder="아이디를 입력해주세요" name="user_id"></li>
+            <li>비밀번호 : <input type="password" placeholder="비밀번호를 입력해주세요" name="user_password"></li>
+            <input type="submit" value="제출하기">
+        </form>
+
+
+        <a href="{% url 'signup' %}">회원가입</a>
+        <a href="{% url 'kakao_signup' %}">카카오로 회원가입하기</a>
+        <a href="https://kauth.kakao.com/oauth/authorize?client_id=9529fd434fd3250003c8cd727617a243&redirect_uri=http://127.0.0.1:8000&response_type=code">kakao login</a>
+        <a href="{% provider_login_url 'google' %}">구글 연결</a>
+    </div>
+</body>
+</html>
