@@ -5,10 +5,29 @@
     font-style: normal;
 }
 
+@media screen and (max-width:800px){
+
+    #signup_container div p{
+        font-size:10px;
+    }
+
+    #signup_container div input::placeholder{
+        font-size:10px;
+    }
+
+    #create_button {
+        font-size:10px;
+    }
+
+}
+
+
 * {
     font-size:20px;
     font-family:'GmarketSansMedium';
 }
+
+
 
 #top_bar{
     background-color:#F8B517;

@@ -10,27 +10,7 @@
     font-family:'GmarketSansMedium';
 }
 
-#top_bar{
-    background-color:#F8B517;
-    text-align: center;
-    width:100%;
-    height: 50px;
-}
 
-#top_bar a{
-    text-decoration: none;
-    font-size:2rem;
-    color:black;
-}
-
-
-
-#navigation{
-    width:100%;
-    height:50px;
-    background-color: rgba(201, 177, 177, 0.261);
-    margin-top:-10px;
-}
 
 .detail_img img{
     width:150px;
