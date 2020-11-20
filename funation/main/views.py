@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Product
+from member.models import Member
 import requests
 
 def index(request):

@@ -1,0 +1,66 @@
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-size:20px;
+    font-family:'GmarketSansMedium';
+}
+
+#top_bar{
+    background-color:#F8B517;
+    text-align:center;
+}
+
+#top_bar h1{
+    font-size:2rem;
+}
+
+
+li{
+    list-style: none;
+}
+
+#signup_form{
+    text-align: center;
+    width:50%;
+    margin-left:25%;
+    display:flex;
+    flex-direction: column;
+    
+}
+
+
+#signup_form li p{
+    margin-left:25%;
+    text-align: left;
+}
+
+#signup_form div{    
+    text-align: left;
+    padding-bottom:20px;
+}
+
+#signup_container{
+    margin-left:30%;
+}
+
+#signup_container div input:focus{
+    background: #F8B517;
+}
+
+#create_button{
+    border-radius: 8px;
+    background-color: white;
+}
+
+#create_button:hover{
+    background: #F8B517;
+}
+
+#error_message{
+    color:#F8B517;
+}

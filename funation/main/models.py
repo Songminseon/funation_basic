@@ -11,6 +11,6 @@ class Product(models.Model):
         return self.product_name + str(self.product_target_money)
 
     def summary(self):
-        return self.product_description[:30]
+        return self.product_description[:30] + "..."
 
 # Create your models here.
