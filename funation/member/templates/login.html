@@ -14,8 +14,21 @@
 <body>
     <div id="body_wrapper">
         <div id="top_bar">
-            <h1>기부니가좋다</h1>
+            <a href="{% url 'index' %}">기부니가좋다</a>
         </div>
+        <div id="navigation">
+            <div id="login_bar">
+                {% if user.is_active %}
+                
+                {{user.username}}님 안녕하세요.
+                
+                <a href="{% url 'logout' %}">로그아웃</a>
+                {% else %}
+                <a href="{% url 'login' %}">로그인</a>
+                {% endif %}
+            </div>   
+        </div>
+
         <div id="login_wrapper">
             <div id="login_form">
                 <form method="POST" action="{% url 'login_try' %}">
