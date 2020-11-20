@@ -11,15 +11,10 @@
 </head>
 
 <body>
-    <div id="body_wrapper">
-
         <div id="top_bar">
-            <h1>기부니가좋다</h1>
+            <a href="{% url 'index' %}">기부니가좋다</a>
         </div>
         <div id="navigation">
-            <div id="content_bar">
-                <a href="{% url 'index' %}">기부참여하기</a>
-            </div>
             <div id="login_bar">
                 {% if user.is_active %}
 
@@ -31,7 +26,7 @@
                 {% endif %}
             </div>
         </div>
-
+    
         <div class="detail_wrapper">
             <div class="product_detail_wrapper">
                 <form method="POST" action="{% url 'kakaopay' %}">
@@ -62,9 +57,6 @@
                 </form>
             </div>
         </div>
-
-    </div>
-
 </body>
 <script>
     $(function () {

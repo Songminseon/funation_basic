@@ -12,16 +12,17 @@
 
 #top_bar{
     background-color:#F8B517;
+    text-align: center;
+    width:100%;
+    height: 50px;
 }
 
-#body_wrapper{
-    height:100%;
-    margin-top:10px;
+#top_bar a{
+    text-decoration: none;
+    font-size:2rem;
+    color:black;
 }
 
-#body_wrapper h1{
-    text-align:center;
-}
 
 
 
@@ -32,52 +33,25 @@
     margin-top:-10px;
 }
 
-#content_bar{
-    padding-top:10px;
-    padding-left:150px;
-    float:left;
-    font-size:12px;
-}
 
 #login_bar{
     padding-top:10px;
-    float:right;
     margin-right:100px;
 }
 
-#content_bar a {
-    font-size:1.2rem;
-    text-decoration: none;
-}
-
-#funation_wrapper{
-    margin-top:30px;
-    width:70%;
-    margin-left:15%;
-    border-style: double;
-    border-color:grey;
-}
 
 #funation_introduce{
     padding-top:15px;
+    text-align: center;
 }
-
-
 
 .product_wrapper{
-    margin-top: 20px;
-    display:inline-block;
-    padding : 10px;
-    margin-left:100px;
-    margin-bottom:20px;
-    border-color: grey;
-    border-style: groove;
-    width:350px;
-    height: 100%;
-}
-
-.product_description{
-    padding-top:10px;
+    border: #F8B517;
+    border-style: double;
+    margin-left:30%;
+    width:40%;
+    margin-bottom: 10vh;
+    padding : 20px;
 }
 
 .product_img img {
@@ -92,4 +66,13 @@
 
 .product_name{
     border-bottom: solid grey;
+}
+
+
+.product_description{
+    padding-top:10px;
+}
+
+.product_wrapper a:hover{
+    color:#F8B517;
 }

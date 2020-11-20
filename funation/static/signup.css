@@ -45,7 +45,12 @@ li{
 }
 
 #signup_container{
-    margin-left:30%;
+    width:30%;
+    margin-left:15%;
+}
+
+#signup_container div input{
+    width: 30vw;
 }
 
 #signup_container div input:focus{

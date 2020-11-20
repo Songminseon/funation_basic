@@ -22,28 +22,35 @@
                     {% csrf_token %}
                     <div id="login">
                         <h1>로그인하기</h1>
-                        <li>
-                            <p>아이디</p> <input type="text" placeholder="아이디를 입력해주세요" name="user_id">
-                        </li>
-                        <li>
-                            <p>비밀번호</p> <input type="password" placeholder="비밀번호를 입력해주세요" name="user_password">
-                        </li>
-                        <input type="submit" value="로그인" id="login_submit">
-                        <button class="other_form"><a href="{% url 'signup' %}">회원가입</a></button>
+                        <div>
+                            <input type="text" placeholder="아이디를 입력해주세요" name="user_id">
+                        </div>
+                        <div>
+                            <input type="password" placeholder="비밀번호를 입력해주세요" name="user_password">
+                        </div>
+                        
+                        <div>
+                            <input type="submit" value="로그인" id="login_submit">
+                        </div>
+                        <div style="padding-top:10px;">
+                            <button class="other_form"><a href="{% url 'signup' %}">회원가입</a></button>
+                        </div>
+                            
                     </div>
                 </form>
+            </div>
 
-                <div id="login_sns">
-                    <div id="kakao_connect">
-                        <button class="other_form"><a
-                                href="https://kauth.kakao.com/oauth/authorize?client_id=9529fd434fd3250003c8cd727617a243&redirect_uri=http://127.0.0.1:8000&response_type=code">카카오톡
-                                연결</a></button>
-                    </div>
-                    <div id="google_connect">
-                        <button class="other_form"><a href="{% provider_login_url 'google' %}">구글 연결</a></button>
-                    </div>
+            <div id="login_sns">
+                <div id="kakao_connect">
+                    <button class="other_form"><a
+                        href="https://kauth.kakao.com/oauth/authorize?client_id=9529fd434fd3250003c8cd727617a243&redirect_uri=http://127.0.0.1:8000&response_type=code">카카오톡
+                        연결</a></button>
+                </div>
+                <div id="google_connect">
+                    <button class="other_form"><a href="{% provider_login_url 'google' %}">구글 연결</a></button>
                 </div>
             </div>
+        </div>
         </div>
 
     </div>
