@@ -50,6 +50,9 @@ html, body {
     background-color: rgba(201, 177, 177, 0.261);
 }
 
+#login_bar a{
+    text-decoration: none;
+}
 
 #login_bar{
     padding-top:10px;

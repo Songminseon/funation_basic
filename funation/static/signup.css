@@ -35,6 +35,9 @@ html, body {
     padding:0px;
 }
 
+#login_bar a{
+    text-decoration: none;
+}
 
 #top_bar{
     background-color:#F8B517;

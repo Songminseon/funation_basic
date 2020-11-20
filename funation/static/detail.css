@@ -44,6 +44,9 @@ html, body {
     padding-left: 15px;
 }
 
+#login_bar a{
+    text-decoration: none;
+}
 
 
 .detail_img img{
@@ -84,4 +87,16 @@ html, body {
 
 #kakao_pay:hover{
     background: #F8B517;
+}
+
+.detail_donation_money{
+   margin-top: 20px;
+}
+
+.detail_target_money{
+    margin-bottom:20px;
+}
+
+.select_part{
+    margin-bottom:20px;
 }

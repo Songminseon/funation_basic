@@ -1,12 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입성공</title>
+    <link rel="stylesheet" href="{% static 'success.css' %}">
 </head>
 <body>
-    <a href="{% url 'login' %}">로그인 하러가기</a>
+    <div id="top_bar">
+        <a href="{% url 'index' %}">기부니가좋다</a>
+    </div>
+
+    <div id="navigation">
+        <div id="navigation_donation">
+            <img src="{% static 'images/funation_logo.png' %}" />
+            <a href="{% url 'index' %}">기부물품 구경하기</a>
+        </div>
+        
+        <div id="navigation_login">
+            <img src="{% static 'images/funation_logo.png' %}" />
+            <a href="{% url 'login' %}">로그인 하러가기</a>
+        </div>
+    </div>
 </body>
     <script>
         alert("성공적인 회원가입입니다.")

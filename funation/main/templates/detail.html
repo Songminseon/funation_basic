@@ -8,41 +8,42 @@
     <link rel="stylesheet" href="{% static 'detail.css' %}">
     <title>기부참여하기</title>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 </head>
 
 <body>
-<div>
-   
-    <div id="top_bar">
-        <a href="{% url 'index' %}">기부니가좋다</a>
-    </div>
-    <div id="navigation">
-        <div id="login_bar">
-            {% if user.is_active %}
-            
-            {{user.username}}님 안녕하세요.
-            
-            <a href="{% url 'logout' %}">로그아웃</a>
-            {% else %}
-            <a href="{% url 'login' %}">로그인</a>
-            {% endif %}
-        </div>   
-    </div>
+    <div>
 
-    <div class="detail_wrapper">
-        <div class="product_detail_wrapper">
-            <form method="POST" action="{% url 'kakaopay' %}">
-                {% csrf_token %}
-                <div class="detail_img">
-                    <img src="{{i.product_img.url}}">
-                </div>
-                <div class="detail_introduce">
-                    <div class="detail_name">{{i.product_name}}</div>
-                    <div class="detail_description">{{i.product_description}}</div>
-                    <div class="detail_crowd_money">모인금액 : {{i.product_crowd_money}}원</div>
-                    <div class="detail_target_money">목표금액 : {{i.product_target_money}}원</div>
-                    <div class="detail_donation_money">
+        <div id="top_bar">
+            <a href="{% url 'index' %}">기부니가좋다</a>
+        </div>
+        <div id="navigation">
+            <div id="login_bar">
+                {% if user.is_active %}
+
+                {{user.username}}님 안녕하세요.
+
+                <a href="{% url 'logout' %}">로그아웃</a>
+                {% else %}
+                <a href="{% url 'login' %}">로그인</a>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="detail_wrapper">
+            <div class="product_detail_wrapper">
+                <form method="POST" action="{% url 'kakaopay' %}">
+                    {% csrf_token %}
+                    <div class="detail_img">
+                        <img src="{{i.product_img.url}}">
+                    </div>
+                    <div class="detail_introduce">
+                        <div class="detail_name">{{i.product_name}}</div>
+                        <div class="detail_description">{{i.product_description}}</div>
+                        <div class="detail_crowd_money">모인금액 : {{i.product_crowd_money}}원</div>
+                        <div class="detail_target_money">목표금액 : {{i.product_target_money}}원</div>
+
                         <div class="number_select">
                             <div class="select_part">
                                 <p>기부니 이만큼 할래</p>
@@ -50,16 +51,17 @@
                                 <a href="#" id="increaseQuantity">+</a>
                                 <a href="#" id="decreaseQuantity">-</a>
                             </div>
+
+                            <div class="deatil_donation_go">
+                                <input type="submit" value="카카오페이로 결제하기" id="kakao_pay">
+                            </div>
                         </div>
-                        <div class="deatil_donation_go">
-                            <input type="submit" value="카카오페이로 결제하기" id="kakao_pay">
-                        </div>
+                        
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
-</div>    
 </body>
 <script>
     $(function () {

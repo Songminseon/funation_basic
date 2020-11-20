@@ -42,6 +42,11 @@
                 <div class="product_description">{{i.summary}}</div>
                 <div class="product_crowd_money">지금 모인 금액 : {{i.product_crowd_money}}원</div>
                 <div class="product_target_money">이만큼 모아야 해요 : {{i.product_target_money}}원</div>
+                <div class="current_status">
+                    <div class="status_bar">
+                        <div class="current" style="width:{% widthratio i.product_crowd_money i.product_target_money 100 %}%">{% widthratio i.product_crowd_money i.product_target_money 100 %}%</div>
+                    </div>
+                </div>
                 <div class="product_detail">
                 {% if user.is_active%}
                 <a href="{% url 'detail' i.id %}">기부하러가기</a>
