@@ -34,7 +34,20 @@
     .other_form{
         font-size:1.5rem;
     }
+
+    .user_input{
+        width:80vw;
+        margin-bottom:10px;
+        padding:10px;
+    }
+
+    .other_form{
+        width:80vw;
+        font-size:2rem;
+    }
+
 }
+
 
 @media screen and (min-width:800px) and (max-width:2000px){
     #top_bar a{
@@ -43,6 +56,14 @@
         color:black;
         padding-left:15px;
         font-weight: 800;
+    }
+
+    .user_input{
+        margin-top: 20px;
+        width: 20vw;
+    }
+    .other_form{
+        width:20vw;
     }
 }
 
@@ -123,9 +144,8 @@ li{
 .other_form{
     border-radius: 8px;
     background-color: white;
-    width:20vw;
-
 }
+
 
 .other_form a{
     text-decoration: none;
@@ -143,10 +163,6 @@ li{
     margin-top: 50px;
 }
 
-#login div input{
-    margin-top: 20px;
-    width: 20vw;
-}
 
 #error_message{
     color:red;

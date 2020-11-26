@@ -10,6 +10,43 @@
     font-family:'GmarketSansMedium';
 }
 
+
+@media screen and (max-width:800px){
+    html{
+        font-size:10px;
+    }
+
+    #top_bar a{
+        text-decoration: none;
+        font-size:4rem;
+        color:black;
+        padding-left:15px;
+        font-weight: 800;
+    }
+
+    .product_detail_wrapper{
+        width:90vw;
+        margin-left:5%;
+    }
+}
+
+
+@media screen and (min-width:800px) and (max-width:2000px){
+    #top_bar a{
+        text-decoration:none;
+        font-size:2rem;
+        color:black;
+        padding-left:15px;
+        font-weight: 800;
+    }
+
+    .product_detail_wrapper{
+        width: 50vw;
+        margin-left:25%;    
+    }
+}
+
+
 html, body {
     width: 100%;
     height: 100%;
@@ -24,12 +61,6 @@ html, body {
     height: 50px;
 }
 
-#top_bar a{
-    text-decoration: none;
-    font-size:2rem;
-    color:black;
-    padding-left:15px;
-}
 
 #navigation{
     width:100%;
@@ -56,10 +87,8 @@ html, body {
 }
 
 .product_detail_wrapper{
-    text-align: center;
+    text-align: left;
     border: double;
-    width: 50vw;
-    margin-left:25%;
     padding:20px;
     margin-top:30px;
     border-color:#F8B517;
@@ -100,4 +129,21 @@ html, body {
 
 .select_part{
     margin-bottom:20px;
+}
+
+.detail_name{
+    font-size:2rem;
+    font-weight: 800;
+}
+
+.detail_description{
+    font-size:0.75rem;
+}
+
+.detail_crowd_money{
+    font-size:0.8rem;
+}
+
+.deteail_target_money{
+    font-size:0.8rem;
 }

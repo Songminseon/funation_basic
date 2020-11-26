@@ -42,6 +42,11 @@ html, body {
         padding-left:15px;
         font-weight: 800;
     }
+
+    .product_wrapper{
+        margin-left:2.5%;
+        width:80%;
+    }
 }
 
 @media screen and (min-width:800px) and (max-width:2000px){
@@ -51,6 +56,11 @@ html, body {
         color:black;
         padding-left:15px;
         font-weight: 800;
+    }
+
+    .product_wrapper{
+        margin-left:25%;
+        width:50%;
     }
 }
 
@@ -84,8 +94,7 @@ html, body {
 .product_wrapper{
     border: #F8B517;
     border-style: double;
-    margin-left:30%;
-    width:40%;
+
     margin-bottom: 10vh;
     padding : 20px;
 }

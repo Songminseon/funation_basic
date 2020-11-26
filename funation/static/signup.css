@@ -5,6 +5,13 @@
     font-style: normal;
 }
 
+
+* {
+    font-size:20px;
+    font-family:'GmarketSansMedium';
+}
+
+
 @media screen and (max-width:800px){
 
     #signup_container div p{
@@ -16,16 +23,65 @@
     }
 
     #create_button {
-        font-size:10px;
+        width:80vw;
     }
 
+
+    #signup_container{
+        width:80vw;
+        margin-left:5vw;
+    }
+
+    #signup_container div input{
+        width: 80vw;
+        border-radius: 10px;
+    }
+    #signup_form li p{
+        margin-left:10vw;
+    }
+    
+
 }
 
 
-* {
-    font-size:20px;
-    font-family:'GmarketSansMedium';
+@media screen and (min-width:800px) and (max-width:2000px){
+    #top_bar a{
+        text-decoration:none;
+        font-size:2rem;
+        color:black;
+        padding-left:15px;
+        font-weight: 800;
+    }
+
+    .user_input{
+        margin-top: 20px;
+        width: 20vw;
+    }
+    .other_form{
+        width:20vw;
+    }
+
+    #signup_form{
+        width:50%;
+        margin-left:25%;
+    }
+
+    #signup_container{
+        width:30%;
+        margin-left:15%;
+    }
+    
+    #signup_container div input{
+        width: 30vw;
+    }
+
+    #signup_form li p{
+        margin-left:25vw;
+    }
+    
 }
+
+
 
 
 html, body {
@@ -76,8 +132,6 @@ li{
 
 #signup_form{
     text-align: center;
-    width:50%;
-    margin-left:25%;
     display:flex;
     flex-direction: column;
     
@@ -85,7 +139,6 @@ li{
 
 
 #signup_form li p{
-    margin-left:25%;
     text-align: left;
 }
 
@@ -94,14 +147,7 @@ li{
     padding-bottom:20px;
 }
 
-#signup_container{
-    width:30%;
-    margin-left:15%;
-}
 
-#signup_container div input{
-    width: 30vw;
-}
 
 #signup_container div input:focus{
     background: #F8B517;
