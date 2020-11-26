@@ -179,7 +179,8 @@ def login_try(request):
             auth.login(request, user)
             return redirect('index')
         else:
-            return render(request, 'login.html', {"error":"invalid information"})
+            messages.info(request, "일치하는 정보가 없습니다.")
+            return render(request, 'login.html')
 
     else:
         return render(request, 'login.html')

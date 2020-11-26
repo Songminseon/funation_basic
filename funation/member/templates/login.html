@@ -34,6 +34,13 @@
                 <form method="POST" action="{% url 'login_try' %}">
                     {% csrf_token %}
                     <div id="login">
+                        <div id="error_message">
+                            {% if messages %}
+                            {% for message in messages %}
+                            {{message.message}}
+                            {% endfor %}
+                            {% endif %}
+                        </div>
                         <h1>로그인하기</h1>
                         <div>
                             <input type="text" placeholder="아이디를 입력해주세요" name="user_id">
@@ -43,24 +50,23 @@
                         </div>
                         
                         <div>
-                            <input type="submit" value="로그인" id="login_submit">
-                        </div>
-                        <div style="padding-top:10px;">
-                            <button class="other_form"><a href="{% url 'signup' %}">회원가입</a></button>
+                            <input type="submit" class="other_form" value="로그인" id="login_submit">
                         </div>
                             
                     </div>
                 </form>
             </div>
-
+            <div style="padding-top:10px;">
+                <a href="{% url 'signup' %}"><button class="other_form">회원가입</button></a>
+            </div>
             <div id="login_sns">
                 <div id="kakao_connect">
-                    <button class="other_form"><a
-                        href="https://kauth.kakao.com/oauth/authorize?client_id=9529fd434fd3250003c8cd727617a243&redirect_uri=http://127.0.0.1:8000&response_type=code">카카오톡
-                        연결</a></button>
+                    <a href="https://kauth.kakao.com/oauth/authorize?client_id=9529fd434fd3250003c8cd727617a243&redirect_uri=http://127.0.0.1:8000&response_type=code"><button class="other_form">
+                        카카오톡
+                        연결</button></a>
                 </div>
                 <div id="google_connect">
-                    <button class="other_form"><a href="{% provider_login_url 'google' %}">구글 연결</a></button>
+                    <a href="{% provider_login_url 'google' %}"><button class="other_form">구글 연결</button></a>
                 </div>
             </div>
         </div>

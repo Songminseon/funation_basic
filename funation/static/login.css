@@ -10,16 +10,41 @@
     font-family:'GmarketSansMedium';
 }
 
+
 @media screen and (max-width:800px){
-    #login div input::placeholder{
+
+    html{
         font-size:10px;
     }
+    
+    #top_bar a{
+        text-decoration: none;
+        font-size:4rem;
+        color:black;
+        padding-left:15px;
+        font-weight: 800;
+    }
 
-    .other_form a{
-        font-size:15px;
+    
+
+    input::placeholder{
+        font-size:0.8rem
+    }
+    
+    .other_form{
+        font-size:1.5rem;
     }
 }
 
+@media screen and (min-width:800px) and (max-width:2000px){
+    #top_bar a{
+        text-decoration:none;
+        font-size:2rem;
+        color:black;
+        padding-left:15px;
+        font-weight: 800;
+    }
+}
 
 html, body {
     width: 100%;
@@ -37,12 +62,6 @@ html, body {
     text-align: left;
 }
 
-#top_bar a{
-    text-decoration: none;
-    font-size:2rem;
-    color:black;
-    padding-left:15px;
-}
 
 #navigation{
     width:100%;
@@ -50,8 +69,13 @@ html, body {
     background-color: rgba(201, 177, 177, 0.261);
 }
 
+#login h1{
+    font-size:2rem;
+}
+
 #login_bar a{
     text-decoration: none;
+    font-size: 0.8em;
 }
 
 #login_bar{
@@ -122,4 +146,8 @@ li{
 #login div input{
     margin-top: 20px;
     width: 20vw;
+}
+
+#error_message{
+    color:red;
 }
