@@ -36,4 +36,5 @@ urlpatterns = [
     path('donation/pay/cancle/', main.views.paycancle, name="paycancle"),
     path('donation/pay/fail/', main.views.payfail, name="payfail"),
     path('signup/kakaoSignup', member.views.kakao_signup, name="kakao_signup"),
+    path('oauth/', member.views.oauth, name="oauth"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

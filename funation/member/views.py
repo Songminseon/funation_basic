@@ -22,113 +22,49 @@ def login(request):
 def success(request):
     return render(request, "success.html")
 
-
-# class KaKaoLoginView(View):
-#     def get(self, request):
-#         app_key = '9529fd434fd3250003c8cd727617a243'
-
-#         kakao_access_code = request.GET.get('code', None)
-
-#         url = 'http://kauth.kakao.com/oauth/token'
-
-#         headers = {'Content-type':'application/x-www-form-urlencoded; charset=utf-8'}
-
-#         body = {'grant_type' : 'authorization_code', 'client_id':app_key, 'redirect_uri':'http://localhost:8000', 'code':kakao_access_code}
-
-#         kakao_response = requests.post(url, headers=headers, data=body)
-#         return HttpResponse(f'{kakao_response.text}')
-
-# def kakao_signup(request):
-#     app_key = '9529fd434fd3250003c8cd727617a243'
-#     request_url = "https://kauth.kakao.com/oauth/authorize?client_id=" + app_key + "&redirect_uri=http://127.0.0.1:8000&response_type=code"
-#     headers = {'Content-type':'application/x-www-form-urlencoded; charset=utf-8'}
-#     kakao_access_code = request.GET.get('code',None)
-#     body = {'grant_type' : 'authorization_code', 'client_id':app_key, 'redirect_uri':'http://localhost:8000', 'code':kakao_access_code}
-#     kakao_response=requests.post(request_url, headers=headers, data=body)
-#     information = kakao_response
-#     print(information)
-#     print(user_token)
-#     return redirect(request_url)
-
-
 def kakao_signup(request):
-    app_key = '9529fd434fd3250003c8cd727617a243'
-    redirect_uri = 'http://127.0.0.1:8000'
-    access_token = f"https://kauth.kakao.com/oauth/authorize?client_id={app_key}&redirect_uri={redirect_uri}&response_type=code"
-    my_token = requests.get(access_token)
+    login_request_uri = "https://kauth.kakao.com/oauth/authorize?"
 
-    # url = 'https://kauth.kakao.com/oauth/token'
-    # kakao_access_code = request.GET.get('code',None)
-    # headers = {'Content-type':'application/x-www-form-urlencoded; charset=utf-8'}
-    # body = {'grant_type' : 'authorization_code', 'client_id':app_key, 'redirect_uri':'http://localhost:8000', 'code':kakao_access_code}
+    client_id = '9529fd434fd3250003c8cd727617a243'
+    redirect_uri = 'http://127.0.0.1:8000/oauth'
+    login_request_uri += "client_id=" + client_id
+    login_request_uri += "&redirect_uri=" + redirect_uri
+    login_request_uri += '&response_type=code'
+
+    return redirect(login_request_uri)
+
+def oauth(request):
+    code=request.GET['code']
+    print('mycode = ' +str(code))
+
+    client_id = '9529fd434fd3250003c8cd727617a243'
+    redirect_uri = "http://127.0.0.1:8000/oauth"
+
+    access_token_request_uri = "https://kauth.kakao.com/oauth/token?grant_type=authorization_code&"
+
+    access_token_request_uri += "client_id=" + client_id
+    access_token_request_uri += "&redirect_uri=" + redirect_uri
+    access_token_request_uri += "&code=" + code
+
+    access_data = requests.get(access_token_request_uri)
+    json_data = access_data.json()
+    access_token = json_data['access_token']
+
+    user_profile_uri = "https://kapi.kakao.com/v2/user/me?access_token="
+    user_profile_uri += str(access_token)
+    user_profile_uri_data = requests.get(user_profile_uri)
+    user_json_data = user_profile_uri_data.json()
+
+
+    user_nickname = user_json_data['properties']['nickname']
     
-    # kakao_response = requests.post(url, headers=headers, data=body)
-    # return HttpResponse(f'{kakao_response.text}')
-    print(my_token.json())
-    return redirect(access_token)
+    print("aaa = " + user_nickname)
 
-class KakaoSignInView(View):
-    def get(self, request):
-        client_id = '9529fd434fd3250003c8cd727617a243'
-        redirect_uri = "http://127.0.0.1:8000"
-        return redirect(
-            f"https://kauth.kakao.com/oauth/authorize?client_id={client_id}&redirect_uri={redirect_uri}&response_type=code"
-        )
+    return redirect('index')
+
+
         
-class KakaoSignInCallbackView(View):
-    def get(self, request):
-        try:
-            code = request.GET.get("code")
-            client_id = '9529fd434fd3250003c8cd727617a243'
-            redirect_uri = "http://127.0.0.1:8000"
 
-            token_request = requests.get(
-                f"https://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_id={client_id}&redirect_uri={redirect_uri}&code={code}"
-            )
-
-            token_json = token_request.json()
-            
-            error = token_json.get("error",None)
-
-            if error is not None :
-                return JsonResponse({"message": "INVALID_CODE"}, status = 400)
-
-            access_token = token_json.get("access_token")
-
-            #------get kakaotalk profile info------#
-
-            profile_request = requests.get(
-                "https://kapi.kakao.com/v2/user/me", headers={"Authorization" : f"Bearer {access_token}"},
-            )
-            profile_json = profile_request.json()
-
-            kakao_account = profile_json.get("kakao_account")
-            email = kakao_account.get("email", None)
-            kakao_id = profile_json.get("id")
-
-        except KeyError:
-            return JsonResponse({"message" : "INVALID_TOKEN"}, status = 400)
-
-        except access_token.DoesNotExist:
-            return JsonResponse({"message" : "INVALID_TOKEN"}, status = 400)
-           
-        if Account.objects.filter(kakao_id = kakao_id).exists():
-            user = Account.objects.get(kakao_id = kakao_id)
-            token = jwt.encode({"email" : email}, SECRET_KEY, algorithm = "HS256")
-            token = token.decode("utf-8")
-
-            return JsonResponse({"token" : token}, status=200)
-
-        else :
-            Account(
-                kakao_id = kakao_id,
-                email    = email,
-            ).save()
-
-            token = jwt.encode({"email" : email}, SECRET_KEY, algorithm = "HS256")
-            token = token.decode("utf-8")
-
-            return JsonResponse({"token" : token}, status = 200)
 
 
 def signup_create(request):
